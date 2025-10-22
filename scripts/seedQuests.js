@@ -19,7 +19,7 @@ const sampleEvents = [
     timezone: "WAT",
     prizePool: "$50,000 USDC",
     status: "upcoming",
-    tags: ["DeFi", "Hackathon", "Smart Contracts"],
+    tags: ["zsdsdDeFi", "Hackathon", "Smart Contracts"],
     requirements: [
       "Basic knowledge of Solidity",
       "Experience with Web3 development",
