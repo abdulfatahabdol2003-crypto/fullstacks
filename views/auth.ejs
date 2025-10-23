@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONBOARD3 - Authentication</title>
     <link rel="stylesheet" href="/css/head.css">
+    <link rel="stylesheet" href="/css/load.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -227,6 +228,75 @@
             }
         });
     </script>
-    <script src="./js/head.js"></script>
+    <script src="/js/head.js"></script>
+    <script>
+       // Add to your main JavaScript file
+document.addEventListener('DOMContentLoaded', function() {
+    // Create preloader element
+    const preloader = document.createElement('div');
+    preloader.id = 'preloader';
+    preloader.innerHTML = `
+        <div class="preloader-content">
+            <div class="loader"></div>
+            <p class="loader-text">Please wait, do not click again...</p>
+        </div>
+    `;
+    document.body.appendChild(preloader);
+    
+    // Hide preloader initially
+    preloader.style.display = 'none';
+    
+    let isLoading = false;
+    
+    // Function to show and hide preloader
+    function showPreloader() {
+        if (isLoading) return;
+        
+        isLoading = true;
+        preloader.style.display = 'flex';
+        
+        // Hide after exactly 3 seconds
+        setTimeout(() => {
+            preloader.style.display = 'none';
+            isLoading = false;
+        }, 3000);
+    }
+    
+    // Show preloader on button clicks (not links)
+    document.querySelectorAll('btn-submit').forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Don't prevent default, just show preloader
+            if (!isLoading) {
+                showPreloader();
+            }
+        });
+    });
+    
+    // Show preloader on form submissions
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            // Prevent page reload
+            e.preventDefault();
+            
+            if (!isLoading) {
+                showPreloader();
+                
+                // Get form data and submit via fetch or your existing method
+                const formData = new FormData(this);
+                
+                // You can add your AJAX submission here
+                // Example:
+                // fetch(this.action, {
+                //     method: this.method,
+                //     body: formData
+                // }).then(response => response.json())
+                //   .then(data => {
+                //       // Handle response after preloader hides
+                //   });
+            }
+        });
+    });
+});
+    </script>
 </body>
 </html>

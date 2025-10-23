@@ -9,7 +9,7 @@ const sampleEvents = [
   {
     title: "Onboard3 Virtual Meetup",
     description: "48-hour virtual hackathon focused on building innovative DeFi solutions. Compete for $50K in prizes and connect with top Web3 builders.",
-    eventType: "virtual",
+    eventType: "virtual", 
     category: "hackathon",
     virtualLink: "https://meet.google.com/defi-hack-2025",
     startDate: new Date("2025-11-20T09:00:00"),

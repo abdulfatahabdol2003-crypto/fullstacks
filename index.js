@@ -8,7 +8,6 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 const questRoutes = require("./routes/questRoutes");
 const referralRoutes = require("./routes/referralRoutes");
 const eventRoutes = require("./routes/eventRoutes");
-
 dotenv.config();
 const app = express();
 
@@ -96,6 +95,13 @@ app.get("/dashboard/quest-details/:questId", isAuthenticated, (req, res) => {
 app.get("/dashboard/events", isAuthenticated, (req, res) => {
   res.render("dashboard/event", { 
     title: "Events",
+    user: req.session.userId ? { username: req.session.username } : null
+  });
+});
+
+app.get("/dashboard/learn", isAuthenticated, (req, res) => {
+  res.render("dashboard/learn", { 
+    title: "Learn",
     user: req.session.userId ? { username: req.session.username } : null
   });
 });
