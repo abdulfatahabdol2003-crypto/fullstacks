@@ -8,6 +8,7 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 const questRoutes = require("./routes/questRoutes");
 const referralRoutes = require("./routes/referralRoutes");
 const eventRoutes = require("./routes/eventRoutes");
+const cors = require('cors');
 dotenv.config();
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(session({
   }
 }));
 
+app.use(cors());
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -64,6 +66,12 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   res.render("about", { 
     title: "About Page",
+    user: req.session.userId ? { username: req.session.username } : null
+  });
+});
+app.get("/pitch", (req, res) => {
+  res.render("pitch", { 
+    title: "Pitch Deck",
     user: req.session.userId ? { username: req.session.username } : null
   });
 });

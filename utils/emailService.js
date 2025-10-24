@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
-const adminEmail="onboardweb3ng@gmail.com"
-const emailPassword="htmi enqx usyo ckjn"
+const adminEmail="abdulfatahabdol2004@gmail.com"
+const emailPassword="sbss rmqr kiub lmjz"
 // Send verification email
 exports.sendVerificationEmail = async (email, username, verificationToken) => {
   // Check if email credentials are configured
