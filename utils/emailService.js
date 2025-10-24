@@ -1,9 +1,10 @@
 const nodemailer = require("nodemailer");
-
+const adminEmail="onboardweb3ng@gmail.com"
+const emailPassword="htmi enqx usyo ckjn"
 // Send verification email
 exports.sendVerificationEmail = async (email, username, verificationToken) => {
   // Check if email credentials are configured
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
+  if (!adminEmail || !emailPassword) {
     console.error("❌ Email credentials not found in .env file!");
     console.log("Please add EMAIL_USER and EMAIL_PASSWORD to your .env file");
     return { success: false, error: "Email service not configured" };
@@ -13,8 +14,8 @@ exports.sendVerificationEmail = async (email, username, verificationToken) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASSWORD
+      user: adminEmail,
+      pass: emailPassword
     }
   });
 
@@ -138,7 +139,7 @@ exports.sendVerificationEmail = async (email, username, verificationToken) => {
 // Send welcome email after verification
 exports.sendWelcomeEmail = async (email, username) => {
   // Check if email credentials are configured
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
+  if (!adminEmail || !emailPassword) {
     console.error("❌ Email credentials not found in .env file!");
     return;
   }
@@ -147,8 +148,8 @@ exports.sendWelcomeEmail = async (email, username) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASSWORD
+      user: adminEmail,
+      pass: emailPassword
     }
   });
 
